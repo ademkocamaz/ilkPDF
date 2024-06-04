@@ -8,6 +8,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import ilkadam.ilkpdf.domain.Document
+import ilkadam.ilkpdf.presentation.StringUtil
 
 @Composable
 fun LibraryItem(
@@ -18,6 +19,6 @@ fun LibraryItem(
         horizontalArrangement = Arrangement.SpaceBetween
     ) {
         Text(text = document.name)
-        Text(text = document.size.toString())
+        Text(text = StringUtil.readableFileSize(document.size))
     }
 }

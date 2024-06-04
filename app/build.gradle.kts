@@ -84,8 +84,10 @@ dependencies {
     kapt("androidx.room:room-compiler:2.6.1")
     implementation("androidx.room:room-ktx:2.6.1")
 
+
     // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0")
+    implementation("androidx.compose.runtime:runtime-livedata:1.6.7")
+
 }
 // Allow references to generated code
 kapt {

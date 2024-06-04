@@ -17,6 +17,7 @@ import javax.inject.Inject
 class LibraryViewModel @Inject constructor(
     val interactors: Interactor
 ) : ViewModel() {
+
     val documents: MutableLiveData<List<Document>> = MutableLiveData()
 
     fun loadDocuments() {

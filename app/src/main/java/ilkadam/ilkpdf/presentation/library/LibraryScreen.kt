@@ -12,6 +12,8 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
@@ -22,6 +24,12 @@ import ilkadam.ilkpdf.presentation.library.components.LibraryItem
 fun LibraryScreen() {
     val libraryViewModel: LibraryViewModel = viewModel()
     val uri = remember { mutableStateOf<Uri?>(null) }
+    val documents = libraryViewModel.documents.observeAsState()
+
+    LaunchedEffect(key1 = Unit) {
+        libraryViewModel.loadDocuments()
+    }
+
 
     val pickPDFLauncher = rememberLauncherForActivityResult(
         contract = ActivityResultContracts.OpenDocument(),
@@ -35,6 +43,9 @@ fun LibraryScreen() {
     }
 
     Scaffold(
+        topBar = {
+            Text(text = "Count:"+documents.value?.size.toString())
+        },
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
@@ -49,8 +60,8 @@ fun LibraryScreen() {
                 .fillMaxSize()
                 .padding(innerPadding)
         ) {
-            libraryViewModel.loadDocuments()
-            libraryViewModel.documents.value?.let { documents ->
+
+            documents.value?.let { documents ->
                 items(documents) { document ->
                     LibraryItem(document = document)
                 }
