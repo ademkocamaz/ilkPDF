@@ -30,14 +30,15 @@ fun LibraryScreen() {
         }
     )
 
+    uri.value?.let {
+        libraryViewModel.addDocument(it)
+    }
+
     Scaffold(
         floatingActionButton = {
             FloatingActionButton(
                 onClick = {
                     pickPDFLauncher.launch(arrayOf("application/pdf"))
-                    uri.value?.let {
-                        libraryViewModel.addDocument(it)
-                    }
                 }) {
                 Text(text = "Ekle")
             }

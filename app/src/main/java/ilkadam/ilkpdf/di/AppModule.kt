@@ -40,7 +40,9 @@ object AppModule {
             appContext,
             AppDatabase::class.java,
             "ilkpdf"
-        ).build()
+        )
+            //.fallbackToDestructiveMigration()
+            .build()
 
     @Provides
     fun provideBookmarkDao(appDatabase: AppDatabase): BookmarkDao = appDatabase.bookmarkDao()
