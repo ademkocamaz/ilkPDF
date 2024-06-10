@@ -4,16 +4,19 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
+import android.os.FileUtils
 import android.provider.MediaStore
 import android.provider.OpenableColumns
+import androidx.core.net.toUri
 import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
+import java.io.InputStream
 import kotlin.concurrent.fixedRateTimer
 
 object FileUtil {
-    data class DocumentDetail(val name: String, val size: Int, val thumbnail: String)
+    data class DocumentDetail(val uri: Uri?, val name: String, val size: Int, val thumbnail: String)
 
     private fun getPdfThumbnailUri(
         context: Context,
@@ -57,14 +60,36 @@ object FileUtil {
                 return if (metaCursor.moveToFirst()) {
                     val name = metaCursor.getString(nameIndex)
                     DocumentDetail(
+                        copyDocumentToCacheDir(context,documentUri,name),
                         name,
                         metaCursor.getInt(sizeIndex),
                         getPdfThumbnailUri(context, documentUri, name)
                     )
                 } else {
-                    DocumentDetail("", 0, "")
+                    DocumentDetail(null, "", 0, "")
                 }
-            } ?: return DocumentDetail("No name", 0, "")
+            } ?: return DocumentDetail(null, "No name", 0, "")
 
+    }
+
+    private fun copyDocumentToCacheDir(
+        context: Context,
+        documentUri: String,
+        documentName: String
+    ): Uri {
+        val cacheDocument = File(context.cacheDir, documentName)
+        val inputStream = context.contentResolver.openInputStream(Uri.parse(documentUri))
+        val outputStream = context.contentResolver.openOutputStream(cacheDocument.toUri())
+
+        val bufferSize = DEFAULT_BUFFER_SIZE
+        var bytesCopied: Long = 0
+        val buffer = ByteArray(bufferSize)
+        var bytes = inputStream!!.read(buffer)
+        while (bytes >= 0) {
+            outputStream!!.write(buffer, 0, bytes)
+            bytesCopied += bytes
+            bytes = inputStream!!.read(buffer)
+        }
+        return cacheDocument.toUri()
     }
 }

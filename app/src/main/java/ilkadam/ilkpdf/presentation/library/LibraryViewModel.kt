@@ -8,28 +8,35 @@ import dagger.hilt.android.lifecycle.HiltViewModel
 import ilkadam.ilkpdf.domain.Document
 import ilkadam.ilkpdf.framework.Interactor
 import kotlinx.coroutines.Dispatchers
-import kotlinx.coroutines.GlobalScope
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 import javax.inject.Inject
 
 @HiltViewModel
 class LibraryViewModel @Inject constructor(
-    val interactors: Interactor
+    private val interactor: Interactor
 ) : ViewModel() {
+
+    init {
+        loadDocuments()
+    }
 
     val documents: MutableLiveData<List<Document>> = MutableLiveData()
 
     fun loadDocuments() {
         viewModelScope.launch {
-            documents.postValue(interactors.getDocuments())
+            val docs = interactor.getDocuments()
+            if (docs != null) {
+                documents.postValue(docs)
+            }
+
         }
     }
 
     fun addDocument(uri: Uri) {
         viewModelScope.launch {
             withContext(Dispatchers.IO) {
-                interactors.addDocument(Document(uri.toString(), "", 0, ""))
+                interactor.addDocument(Document(uri.toString(), "", 0, ""))
             }
             loadDocuments()
         }
@@ -37,7 +44,7 @@ class LibraryViewModel @Inject constructor(
 
     fun setOpenDocument(document: Document) {
         viewModelScope.launch {
-            interactors.setOpenDocument(document)
+            interactor.setOpenDocument(document)
         }
     }
 }

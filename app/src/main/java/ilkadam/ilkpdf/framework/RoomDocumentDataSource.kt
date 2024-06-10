@@ -22,10 +22,10 @@ class RoomDocumentDataSource @Inject constructor(
 
         documentDao.addDocument(
             DocumentEntity(
-                document.url,
-                details.name,
-                details.size,
-                details.thumbnail
+                uri=details.uri.toString(),
+                title=details.name,
+                size = details.size,
+                thumbnailUri = details.thumbnail
             )
         )
     }
@@ -36,10 +36,10 @@ class RoomDocumentDataSource @Inject constructor(
 
     override suspend fun remove(document: Document) = documentDao.removeDocument(
         DocumentEntity(
-            document.url,
-            document.name,
-            document.size,
-            document.thumbnail
+            uri=document.url,
+            title = document.name,
+            size = document.size,
+            thumbnailUri = document.thumbnail
         )
     )
 }

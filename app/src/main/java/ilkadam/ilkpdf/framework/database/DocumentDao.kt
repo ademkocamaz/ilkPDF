@@ -11,7 +11,7 @@ interface DocumentDao {
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun addDocument(document: DocumentEntity)
 
-    @Query("SELECT * FROM document")
+    @Query("SELECT * FROM document ORDER BY id DESC")
     suspend fun getDocuments(): List<DocumentEntity>
 
     @Delete
