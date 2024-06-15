@@ -1,9 +1,12 @@
 package ilkadam.ilkpdf.presentation
 
+import android.animation.ObjectAnimator
 import android.content.Intent
 import android.os.Bundle
+import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
@@ -11,20 +14,55 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.core.animation.doOnEnd
+import androidx.core.splashscreen.SplashScreen.Companion.installSplashScreen
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import dagger.hilt.android.AndroidEntryPoint
 import ilkadam.ilkpdf.presentation.library.LibraryScreen
 import ilkadam.ilkpdf.presentation.reader.ReaderScreen
+import ilkadam.ilkpdf.presentation.splash.SplashViewModel
 import ilkadam.ilkpdf.ui.theme.IlkPDFTheme
 import org.w3c.dom.Document
 import java.io.Serial
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
+    private val splashViewModel: SplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
+        val splashScreen = installSplashScreen().apply {
+            setOnExitAnimationListener { viewProvider ->
+                ObjectAnimator.ofFloat(
+                    viewProvider.view,
+                    "scaleX",
+                    0.5f, 0f
+                ).apply {
+                    interpolator = OvershootInterpolator()
+                    duration = 300
+                    doOnEnd { viewProvider.remove() }
+                    start()
+                }
+                ObjectAnimator.ofFloat(
+                    viewProvider.view,
+                    "scaleY",
+                    0.5f, 0f
+                ).apply {
+                    interpolator = OvershootInterpolator()
+                    duration = 300
+                    doOnEnd { viewProvider.remove() }
+                    start()
+                }
+            }
+            /*setKeepOnScreenCondition {
+                splashViewModel.isSplashShow.value
+            }*/
+        }
         super.onCreate(savedInstanceState)
+
+        splashScreen.setKeepOnScreenCondition {
+            splashViewModel.isSplashShow.value
+        }
 
         setContent {
             IlkPDFTheme {

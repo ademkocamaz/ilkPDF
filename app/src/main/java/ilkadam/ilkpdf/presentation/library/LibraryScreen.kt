@@ -25,6 +25,7 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.res.stringResource
 import androidx.core.app.ActivityOptionsCompat
 import androidx.core.net.toUri
 import androidx.hilt.navigation.compose.hiltViewModel
@@ -32,6 +33,7 @@ import androidx.navigation.NavController
 import com.google.accompanist.permissions.ExperimentalPermissionsApi
 import com.google.accompanist.permissions.PermissionStatus
 import com.google.accompanist.permissions.rememberPermissionState
+import ilkadam.ilkpdf.R
 import ilkadam.ilkpdf.presentation.Screen
 import ilkadam.ilkpdf.presentation.library.components.LibraryItem
 import ilkadam.ilkpdf.presentation.reader.ReaderScreenViewModel
@@ -114,7 +116,7 @@ fun LibraryScreen(
                     pickPDFLauncher.launch(arrayOf("application/pdf"))
 
                 }) {
-                Text(text = "Ekle")
+                Text(text = stringResource(R.string.add))
             }
         }
     ) { innerPadding ->

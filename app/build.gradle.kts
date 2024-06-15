@@ -102,4 +102,7 @@ dependencies {
 
     //Bouquet
     implementation(libs.bouquet)
+
+    //Splash
+    implementation(libs.androidx.core.splashscreen)
 }
