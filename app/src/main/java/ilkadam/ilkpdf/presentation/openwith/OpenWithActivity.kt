@@ -15,7 +15,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import dagger.hilt.android.AndroidEntryPoint
 import ilkadam.ilkpdf.presentation.openwith.OpenWithScreen
 import ilkadam.ilkpdf.presentation.reader.ReaderScreen
-import ilkadam.ilkpdf.presentation.ui.theme.IlkPDFTheme
+import ilkadam.ilkpdf.ui.theme.IlkPDFTheme
 
 @AndroidEntryPoint
 class OpenWithActivity : ComponentActivity() {

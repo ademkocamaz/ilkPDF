@@ -1,12 +1,24 @@
 package ilkadam.ilkpdf.presentation.reader
 
 import android.widget.Toast
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.navigationBarsPadding
+import androidx.compose.foundation.layout.padding
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Scaffold
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.platform.LocalContext
+import androidx.compose.ui.text.font.FontStyle
+import androidx.compose.ui.unit.dp
+import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import com.rizzi.bouquet.ResourceType
 import com.rizzi.bouquet.VerticalPDFReader
@@ -34,11 +46,32 @@ fun ReaderScreen(
             }
         }
 
-        VerticalPDFReader(
-            state = pdfState,
-            modifier = Modifier
-                .fillMaxSize()
-        )
+        Scaffold(
+            modifier = Modifier.fillMaxSize(),
+            bottomBar = {
+                Row(
+                    modifier = Modifier
+                        .fillMaxWidth()
+                        .navigationBarsPadding(),
+                    horizontalArrangement = Arrangement.End
+                ) {
+                    Text(
+                        modifier = Modifier.padding(5.dp),
+                        text = pdfState.currentPage.toString() + "/" + pdfState.pdfPageCount.toString(),
+                        color = Color.DarkGray
+                    )
+                }
+            }
+        ) { innerPadding ->
+            VerticalPDFReader(
+                state = pdfState,
+                modifier = Modifier
+                    .fillMaxSize()
+                    .padding(innerPadding)
+            )
+        }
+
+
     }
 
     /*Box(

@@ -6,6 +6,7 @@ import android.os.Bundle
 import android.view.animation.OvershootInterpolator
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
+import androidx.activity.enableEdgeToEdge
 import androidx.activity.viewModels
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.material3.MaterialTheme
@@ -29,41 +30,9 @@ import java.io.Serial
 
 @AndroidEntryPoint
 class MainActivity : ComponentActivity() {
-    private val splashViewModel: SplashViewModel by viewModels()
     override fun onCreate(savedInstanceState: Bundle?) {
-        val splashScreen = installSplashScreen().apply {
-            setOnExitAnimationListener { viewProvider ->
-                ObjectAnimator.ofFloat(
-                    viewProvider.view,
-                    "scaleX",
-                    0.5f, 0f
-                ).apply {
-                    interpolator = OvershootInterpolator()
-                    duration = 300
-                    doOnEnd { viewProvider.remove() }
-                    start()
-                }
-                ObjectAnimator.ofFloat(
-                    viewProvider.view,
-                    "scaleY",
-                    0.5f, 0f
-                ).apply {
-                    interpolator = OvershootInterpolator()
-                    duration = 300
-                    doOnEnd { viewProvider.remove() }
-                    start()
-                }
-            }
-            /*setKeepOnScreenCondition {
-                splashViewModel.isSplashShow.value
-            }*/
-        }
         super.onCreate(savedInstanceState)
-
-        splashScreen.setKeepOnScreenCondition {
-            splashViewModel.isSplashShow.value
-        }
-
+        enableEdgeToEdge()
         setContent {
             IlkPDFTheme {
                 // A surface container using the 'background' color from the theme
@@ -71,18 +40,9 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background
                 ) {
-
                     AppNavHost(navController = rememberNavController())
-
-
                 }
             }
         }
     }
-}
-
-
-@Composable
-fun MainScreen() {
-
 }

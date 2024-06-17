@@ -64,9 +64,7 @@ fun LibraryItem(
                     .padding(5.dp),
                 contentDescription = document.name
             )
-            Column(
-
-            ) {
+            Column {
                 Text(text = document.name)
                 Text(text = StringUtil.readableFileSize(document.size))
             }

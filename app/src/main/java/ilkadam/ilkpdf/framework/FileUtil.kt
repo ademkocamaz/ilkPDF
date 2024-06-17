@@ -88,7 +88,7 @@ object FileUtil {
         while (bytes >= 0) {
             outputStream!!.write(buffer, 0, bytes)
             bytesCopied += bytes
-            bytes = inputStream!!.read(buffer)
+            bytes = inputStream.read(buffer)
         }
         return cacheDocument.toUri()
     }

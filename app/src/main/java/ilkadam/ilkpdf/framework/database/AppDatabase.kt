@@ -6,7 +6,7 @@ import androidx.room.Room
 import androidx.room.RoomDatabase
 
 @Database(
-    entities = [BookmarkEntity::class, DocumentEntity::class],
+    entities = [DocumentEntity::class],
     version = 1,
     exportSchema = false
 )
@@ -31,7 +31,5 @@ abstract class AppDatabase : RoomDatabase() {
                 instance = it
             }
     }*/
-
-    abstract fun bookmarkDao(): BookmarkDao
     abstract fun documentDao(): DocumentDao
 }

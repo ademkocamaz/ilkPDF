@@ -1,6 +1,8 @@
 package ilkadam.ilkpdf.presentation
 
 import java.text.DecimalFormat
+import kotlin.math.log10
+import kotlin.math.pow
 
 object StringUtil {
 
@@ -10,10 +12,10 @@ object StringUtil {
         }
 
         val units = arrayOf("B", "KB", "MB", "GB", "TB")
-        val digitGroups = (Math.log10(size.toDouble()) / Math.log10(1024.0)).toInt()
+        val digitGroups = (log10(size.toDouble()) / log10(1024.0)).toInt()
 
         return DecimalFormat("#,##0.#").format(
-            size / Math.pow(1024.0, digitGroups.toDouble())
+            size / 1024.0.pow(digitGroups.toDouble())
         ) + " " + units[digitGroups]
     }
 }
