@@ -1,4 +1,4 @@
-package ilkadam.ilkpdf.interactor
+package ilkadam.ilkpdf.core.interactor
 
 data class Interactor(
     val addDocument: AddDocument,

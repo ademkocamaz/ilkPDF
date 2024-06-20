@@ -1,4 +1,4 @@
-package ilkadam.ilkpdf.domain
+package ilkadam.ilkpdf.core.domain
 
 import java.io.Serializable
 

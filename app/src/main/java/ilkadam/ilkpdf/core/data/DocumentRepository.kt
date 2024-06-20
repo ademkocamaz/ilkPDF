@@ -1,6 +1,6 @@
-package ilkadam.ilkpdf.data
+package ilkadam.ilkpdf.core.data
 
-import ilkadam.ilkpdf.domain.Document
+import ilkadam.ilkpdf.core.domain.Document
 import javax.inject.Inject
 
 class DocumentRepository @Inject constructor(

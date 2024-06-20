@@ -7,15 +7,15 @@ import dagger.Provides
 import dagger.hilt.InstallIn
 import dagger.hilt.android.qualifiers.ApplicationContext
 import dagger.hilt.components.SingletonComponent
-import ilkadam.ilkpdf.data.DocumentDataSource
-import ilkadam.ilkpdf.data.DocumentRepository
+import ilkadam.ilkpdf.core.data.DocumentDataSource
+import ilkadam.ilkpdf.core.data.DocumentRepository
 import ilkadam.ilkpdf.framework.RoomDocumentDataSource
 import ilkadam.ilkpdf.framework.database.AppDatabase
 import ilkadam.ilkpdf.framework.database.DocumentDao
-import ilkadam.ilkpdf.interactor.AddDocument
-import ilkadam.ilkpdf.interactor.GetDocuments
-import ilkadam.ilkpdf.interactor.Interactor
-import ilkadam.ilkpdf.interactor.RemoveDocument
+import ilkadam.ilkpdf.core.interactor.AddDocument
+import ilkadam.ilkpdf.core.interactor.GetDocuments
+import ilkadam.ilkpdf.core.interactor.Interactor
+import ilkadam.ilkpdf.core.interactor.RemoveDocument
 import javax.inject.Singleton
 
 @Module

@@ -5,8 +5,8 @@ import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import dagger.hilt.android.lifecycle.HiltViewModel
-import ilkadam.ilkpdf.domain.Document
-import ilkadam.ilkpdf.interactor.Interactor
+import ilkadam.ilkpdf.core.domain.Document
+import ilkadam.ilkpdf.core.interactor.Interactor
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
@@ -26,7 +26,9 @@ class LibraryViewModel @Inject constructor(
     private fun loadDocuments() {
         viewModelScope.launch {
             val docs = interactor.getDocuments()
-            documents.postValue(docs)
+            if (docs.isNotEmpty()) {
+                documents.postValue(docs)
+            }
         }
     }
 

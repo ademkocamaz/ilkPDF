@@ -17,8 +17,8 @@ android {
         applicationId = "ilkadam.ilkpdf"
         minSdk = 21
         targetSdk = 34
-        versionCode = 2
-        versionName = "1.0.1"
+        versionCode = 5
+        versionName = "1.0.4"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -61,7 +61,7 @@ composeCompiler {
 
 dependencies {
 
-    implementation(project(":core"))
+    //implementation(project(":core"))
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
@@ -109,4 +109,8 @@ dependencies {
 
     //Splash
     implementation(libs.androidx.core.splashscreen)
+
+    //
+    implementation(libs.jp2.android)
+
 }

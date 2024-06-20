@@ -1,17 +1,15 @@
 package ilkadam.ilkpdf.framework
 
 import android.content.Context
-import androidx.compose.ui.platform.LocalContext
 import dagger.hilt.android.qualifiers.ApplicationContext
-import ilkadam.ilkpdf.data.DocumentDataSource
-import ilkadam.ilkpdf.domain.Document
-import ilkadam.ilkpdf.framework.database.DocumentEntity
-import ilkadam.ilkpdf.framework.database.AppDatabase
+import ilkadam.ilkpdf.core.data.DocumentDataSource
+import ilkadam.ilkpdf.core.domain.Document
 import ilkadam.ilkpdf.framework.database.DocumentDao
+import ilkadam.ilkpdf.framework.database.DocumentEntity
 import javax.inject.Inject
 
 class RoomDocumentDataSource @Inject constructor(
-    val documentDao: DocumentDao,
+    private val documentDao: DocumentDao,
     @ApplicationContext val appContext: Context
 ) : DocumentDataSource {
 

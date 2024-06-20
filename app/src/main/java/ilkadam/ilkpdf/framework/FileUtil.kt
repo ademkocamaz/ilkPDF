@@ -4,16 +4,12 @@ import android.content.Context
 import android.graphics.Bitmap
 import android.graphics.pdf.PdfRenderer
 import android.net.Uri
-import android.os.FileUtils
 import android.provider.MediaStore
 import android.provider.OpenableColumns
 import androidx.core.net.toUri
-import dagger.hilt.android.qualifiers.ApplicationContext
 import java.io.File
 import java.io.FileOutputStream
 import java.io.IOException
-import java.io.InputStream
-import kotlin.concurrent.fixedRateTimer
 
 object FileUtil {
     data class DocumentDetail(val uri: Uri?, val name: String, val size: Int, val thumbnail: String)
@@ -90,6 +86,9 @@ object FileUtil {
             bytesCopied += bytes
             bytes = inputStream.read(buffer)
         }
+        inputStream?.close()
+        outputStream?.close()
+
         return cacheDocument.toUri()
     }
 }

@@ -1,16 +1,8 @@
 package ilkadam.ilkpdf.presentation.library
 
-import android.Manifest
-import android.app.Activity
-import android.app.ActivityOptions
 import android.content.Intent
-import android.net.Uri
-import android.os.Build
-import android.provider.DocumentsContract
-import android.provider.MediaStore
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
-import androidx.annotation.RequiresApi
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.LazyColumn
@@ -19,26 +11,15 @@ import androidx.compose.material3.FloatingActionButton
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
-import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.livedata.observeAsState
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.remember
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
-import androidx.core.app.ActivityOptionsCompat
-import androidx.core.net.toUri
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
-import com.google.accompanist.permissions.ExperimentalPermissionsApi
-import com.google.accompanist.permissions.PermissionStatus
-import com.google.accompanist.permissions.rememberPermissionState
 import ilkadam.ilkpdf.R
-import ilkadam.ilkpdf.presentation.Screen
 import ilkadam.ilkpdf.presentation.library.components.LibraryItem
 import ilkadam.ilkpdf.presentation.reader.ReaderScreenViewModel
 
-@OptIn(ExperimentalPermissionsApi::class)
 @Composable
 fun LibraryScreen(
     navController: NavController,

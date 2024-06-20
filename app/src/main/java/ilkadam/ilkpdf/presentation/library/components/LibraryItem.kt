@@ -1,9 +1,6 @@
 package ilkadam.ilkpdf.presentation.library.components
 
 import android.net.Uri
-import androidx.activity.compose.rememberLauncherForActivityResult
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.compose.foundation.Image
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
@@ -17,10 +14,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import androidx.hilt.navigation.compose.hiltViewModel
 import androidx.navigation.NavController
 import coil.compose.AsyncImage
-import ilkadam.ilkpdf.domain.Document
+import ilkadam.ilkpdf.core.domain.Document
 import ilkadam.ilkpdf.presentation.Screen
 import ilkadam.ilkpdf.presentation.StringUtil
 import ilkadam.ilkpdf.presentation.reader.ReaderScreenViewModel

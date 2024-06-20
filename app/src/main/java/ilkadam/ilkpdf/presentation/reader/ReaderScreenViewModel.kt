@@ -1,15 +1,9 @@
 package ilkadam.ilkpdf.presentation.reader
 
 import android.net.Uri
-import androidx.compose.runtime.mutableStateOf
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
-import com.rizzi.bouquet.ResourceType
-import com.rizzi.bouquet.VerticalPdfReaderState
 import dagger.hilt.android.lifecycle.HiltViewModel
-import kotlinx.coroutines.delay
-import kotlinx.coroutines.launch
 import javax.inject.Inject
 
 @HiltViewModel
