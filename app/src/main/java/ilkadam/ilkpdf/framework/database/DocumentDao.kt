@@ -16,4 +16,7 @@ interface DocumentDao {
 
     @Delete
     suspend fun removeDocument(document: DocumentEntity)
+
+    @Query("SELECT * FROM document WHERE uri=:uri")
+    suspend fun getDocument(uri: String): DocumentEntity
 }

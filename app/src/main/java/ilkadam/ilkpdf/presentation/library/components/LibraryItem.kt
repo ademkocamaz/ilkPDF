@@ -8,7 +8,11 @@ import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material3.Card
+import androidx.compose.material3.Icon
+import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
@@ -19,13 +23,15 @@ import coil.compose.AsyncImage
 import ilkadam.ilkpdf.core.domain.Document
 import ilkadam.ilkpdf.presentation.Screen
 import ilkadam.ilkpdf.presentation.StringUtil
+import ilkadam.ilkpdf.presentation.library.LibraryViewModel
 import ilkadam.ilkpdf.presentation.reader.ReaderScreenViewModel
 
 @Composable
 fun LibraryItem(
     navController: NavController,
     document: Document,
-    readerScreenViewModel: ReaderScreenViewModel
+    readerScreenViewModel: ReaderScreenViewModel,
+    libraryViewModel: LibraryViewModel
 ) {
 
     Card(
@@ -63,6 +69,16 @@ fun LibraryItem(
             Column {
                 Text(text = document.name)
                 Text(text = StringUtil.readableFileSize(document.size))
+            }
+            Row(
+                modifier = Modifier.fillMaxWidth(),
+                horizontalArrangement = Arrangement.End
+            ) {
+                IconButton(onClick = {
+                    libraryViewModel.removeDocument(document)
+                }) {
+                    Icon(imageVector = Icons.Filled.Delete, contentDescription = null)
+                }
             }
         }
     }

@@ -65,6 +65,7 @@ fun ReaderScreen(
                 modifier = Modifier
                     .fillMaxSize()
                     .padding(innerPadding)
+
             )
         }
 

@@ -3,7 +3,10 @@ package ilkadam.ilkpdf.presentation
 import android.net.Uri
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
+import androidx.compose.foundation.Image
 import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Close
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.mutableStateOf
@@ -15,6 +18,7 @@ import com.rizzi.bouquet.rememberVerticalPdfReaderState
 
 @Composable
 fun TestScreen() {
+
 
     val uri = remember { mutableStateOf<Uri?>(null) }
     val pickPDFLauncher =

@@ -20,8 +20,8 @@ class RoomDocumentDataSource @Inject constructor(
 
         documentDao.addDocument(
             DocumentEntity(
-                uri=details.uri.toString(),
-                title=details.name,
+                uri = details.uri.toString(),
+                title = details.name,
                 size = details.size,
                 thumbnailUri = details.thumbnail
             )
@@ -32,12 +32,17 @@ class RoomDocumentDataSource @Inject constructor(
         Document(it.uri, it.title, it.size, it.thumbnailUri)
     }
 
-    override suspend fun remove(document: Document) = documentDao.removeDocument(
+    override suspend fun remove(document: Document) {
+        documentDao.removeDocument(get(document))
+    } /*= documentDao.removeDocument(
         DocumentEntity(
-            uri=document.url,
+            uri = document.url,
             title = document.name,
             size = document.size,
             thumbnailUri = document.thumbnail
         )
-    )
+    )*/
+
+    override suspend fun get(document: Document): DocumentEntity =
+        documentDao.getDocument(document.url)
 }

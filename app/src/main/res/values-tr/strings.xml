@@ -3,4 +3,5 @@
     <string name="app_name">ilkPDF</string>
     <string name="title_activity_open_with">OpenWithActivity</string>
     <string name="add">Ekle</string>
+    <string name="empty_list">(Liste Boş)</string>
 </resources>
