@@ -20,6 +20,7 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
+import ilkadam.ilkpdf.AdmobBanner
 import ilkadam.ilkpdf.R
 import ilkadam.ilkpdf.presentation.library.components.LibraryItem
 import ilkadam.ilkpdf.presentation.reader.ReaderScreenViewModel
@@ -118,6 +119,8 @@ fun LibraryScreen(
                         readerScreenViewModel = readerScreenViewModel,
                         libraryViewModel = libraryViewModel
                     )
+                    AdmobBanner()
+
                 }
             }
         } else {

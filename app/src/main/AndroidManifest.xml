@@ -17,6 +17,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.IlkPDF.Starting"
         tools:targetApi="31">
+        <meta-data
+            android:name="com.google.android.gms.ads.APPLICATION_ID"
+            android:value="ca-app-pub-5764318432941968~5339530584"/>
         <activity
             android:name=".presentation.splash.SplashActivity"
             android:exported="true"

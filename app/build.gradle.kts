@@ -11,14 +11,14 @@ plugins {
 
 android {
     namespace = "ilkadam.ilkpdf"
-    compileSdk = 34
+    compileSdk = 35
 
     defaultConfig {
         applicationId = "ilkadam.ilkpdf"
         minSdk = 21
-        targetSdk = 34
-        versionCode = 6
-        versionName = "1.0.5"
+        targetSdk = 35
+        versionCode = 7
+        versionName = "1.0.6"
 
         testInstrumentationRunner = "androidx.test.runner.AndroidJUnitRunner"
         vectorDrawables {
@@ -78,6 +78,9 @@ dependencies {
     androidTestImplementation(libs.ui.test.junit4)
     debugImplementation(libs.ui.tooling)
     debugImplementation(libs.ui.test.manifest)
+
+    //AdMob
+    implementation(libs.play.services.ads)
 
     //Hilt
     implementation(libs.hilt.android)
