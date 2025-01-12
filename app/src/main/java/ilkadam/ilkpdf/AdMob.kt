@@ -20,7 +20,7 @@ fun AdmobBanner(modifier: Modifier = Modifier) {
                 // on below line specifying ad unit id
                 // currently added a test ad unit id.
                 setAdSize(AdSize.BANNER)
-                adUnitId = "ca-app-pub-5764318432941968/3135173108"
+                adUnitId = "ca-app-pub-5764318432941968/1499593582"
                 // calling load ad to load our ad.
                 loadAd(AdRequest.Builder().build())
             }

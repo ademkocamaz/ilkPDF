@@ -21,7 +21,7 @@ class MainActivity : ComponentActivity() {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
 
-        InterstitialAd.load(this,"ca-app-pub-5764318432941968/1414897320", AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
+        InterstitialAd.load(this,"ca-app-pub-5764318432941968/1795107053", AdRequest.Builder().build(), object : InterstitialAdLoadCallback() {
             override fun onAdLoaded(interstitialAd: InterstitialAd) {
                 interstitialAd.show(this@MainActivity)
             }
